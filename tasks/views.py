@@ -9,7 +9,7 @@ def index(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-        redirect('/')
+        return redirect('/')
         
     context = {'tasks': Task.objects.all(), 'form': form}
     return render(request,'tasks/index.html',context)
