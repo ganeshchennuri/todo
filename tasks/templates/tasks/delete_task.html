@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Delete Task</title>
+{% extends 'tasks/base.html' %}
+{% block head %}
+    <title>Delete Task</title>
+    <style>
+        .btn{
+            width: 10%;
+            font-size: 1.2rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h2>Are you sure you really want to delete {{ task.title }}.?</h2>     
+    <br>
+    <form method='POST' action=''>
+        {% csrf_token %}
+        <input class="btn btn-danger" style="margin-left: 30%;" type='submit' value='Confirm'>
+        <a class="btn btn-warning" style="margin-left: 2%;" href='/'> Cancel </a>
+    </form>
+{% endblock %}   
+        
     </head>
     <body>
-        <h1>Are you sure you really want to delete "{{ task.title }}"</h1>
         
-        <br>
-        <form method='POST' action=''>
-            {% csrf_token %}
-            <input type='submit' value:'Confirm'>
-            <a href='/'> Cancel </a>
-        </form>
     </body>
 </html>
